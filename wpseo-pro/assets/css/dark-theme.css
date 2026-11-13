@@ -1,0 +1,419 @@
+/**
+ * WordPress SEO PRO 暗色主题 — 基础与布局。
+ */
+
+:root {
+	--wpseo-bg: #0f1115;
+	--wpseo-surface: #16181f;
+	--wpseo-surface2: #1d1f27;
+	--wpseo-border: #282b35;
+	--wpseo-text: #e5e7eb;
+	--wpseo-text2: #9ca3af;
+	--wpseo-text3: #6b7280;
+	--wpseo-primary: #6366f1;
+	--wpseo-primary-light: #818cf8;
+	--wpseo-primary-dark: #4f46e5;
+	--wpseo-accent: #f59e0b;
+	--wpseo-success: #10b981;
+	--wpseo-warning: #f59e0b;
+	--wpseo-danger: #ef4444;
+	--wpseo-font: -apple-system, BlinkMacSystemFont, "Segoe UI", "Microsoft YaHei", "PingFang SC", "Noto Sans SC", sans-serif;
+}
+
+* {
+	box-sizing: border-box;
+}
+
+html,
+body {
+	background: var(--wpseo-bg);
+	color: var(--wpseo-text);
+	font-family: var(--wpseo-font);
+	font-size: 14px;
+	line-height: 1.6;
+}
+
+.wrap {
+	max-width: 1200px;
+	margin: 0 auto;
+	padding: 24px;
+}
+
+.wpseo-pro-dashboard h1 {
+	font-size: 22px;
+	margin-bottom: 8px;
+}
+
+.wpseo-pro-dashboard .description {
+	color: var(--wpseo-text2);
+	margin-bottom: 24px;
+}
+
+.wpseo-pro-card {
+	background: var(--wpseo-surface);
+	border: 1px solid var(--wpseo-border);
+	border-radius: 12px;
+	padding: 20px;
+	margin-bottom: 20px;
+}
+
+.audit-cards {
+	display: grid;
+	grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+	gap: 20px;
+	margin-bottom: 24px;
+}
+
+.audit-card {
+	background: var(--wpseo-surface);
+	border: 1px solid var(--wpseo-border);
+	border-radius: 12px;
+	padding: 16px 18px;
+}
+
+.audit-card-title {
+	font-size: 14px;
+	font-weight: 600;
+	margin: 0 0 10px 0;
+	display: flex;
+	align-items: center;
+	gap: 8px;
+}
+
+.audit-card-list {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+
+.audit-card-list li {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	padding: 8px 0;
+	border-bottom: 1px solid var(--wpseo-border);
+	font-size: 13px;
+}
+
+.audit-card-list li:last-child {
+	border-bottom: none;
+}
+
+.audit-card-item-label {
+	color: var(--wpseo-text2);
+	flex: 1;
+}
+
+.audit-card-item-value {
+	font-weight: 600;
+	color: var(--wpseo-text);
+	min-width: 30px;
+}
+
+.audit-card-item-note {
+	color: var(--wpseo-text3);
+	font-size: 12px;
+	margin-left: 12px;
+}
+
+.audit-meta {
+	color: var(--wpseo-text3);
+	font-size: 13px;
+	margin-top: 12px;
+}
+
+.wpseo-pro-empty {
+	text-align: center;
+	color: var(--wpseo-text3);
+	padding: 40px 0;
+}
+
+.wpseo-pro-editor-header {
+	display: flex;
+	align-items: center;
+	gap: 12px;
+	margin-bottom: 24px;
+}
+
+.wpseo-pro-editor-header .button {
+	margin-left: auto;
+}
+
+.editor-post-label {
+	font-size: 16px;
+	font-weight: 600;
+}
+
+.wpseo-pro-editor-body {
+	background: var(--wpseo-surface);
+	border: 1px solid var(--wpseo-border);
+	border-radius: 12px;
+	padding: 28px;
+}
+
+.editor-section {
+	margin-bottom: 32px;
+}
+
+.editor-section h2 {
+	font-size: 16px;
+	margin: 0 0 16px 0;
+}
+
+.field-group {
+	margin-bottom: 16px;
+}
+
+.field-group label {
+	display: block;
+	font-size: 13px;
+	color: var(--wpseo-text2);
+	margin-bottom: 6px;
+}
+
+.field-group input,
+.field-group textarea,
+.field-group select {
+	width: 100%;
+	padding: 10px 12px;
+	background: var(--wpseo-bg);
+	border: 1px solid var(--wpseo-border);
+	border-radius: 6px;
+	color: var(--wpseo-text);
+	font-size: 14px;
+	font-family: var(--wpseo-font);
+}
+
+.field-group textarea {
+	resize: vertical;
+}
+
+.field-group .length-indicator {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	font-size: 12px;
+	color: var(--wpseo-text3);
+	margin-top: 6px;
+}
+
+.field-group .length-indicator .current {
+	font-weight: 700;
+}
+
+.score-breakdown {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 16px;
+	margin-top: 16px;
+}
+
+.score-breakdown .breakdown-item {
+	flex: 1;
+	min-width: 120px;
+	background: var(--wpseo-surface2);
+	border: 1px solid var(--wpseo-border);
+	border-radius: 8px;
+	padding: 12px;
+	text-align: center;
+}
+
+.score-breakdown .breakdown-label {
+	font-size: 12px;
+	color: var(--wpseo-text3);
+	margin-bottom: 6px;
+}
+
+.score-breakdown .breakdown-value {
+	font-size: 18px;
+	font-weight: 700;
+}
+
+.editor-actions {
+	display: flex;
+	gap: 12px;
+	margin-top: 24px;
+}
+
+.editor-actions .button {
+	flex: 1;
+}
+
+.score-badge {
+	display: inline-flex;
+	align-items: center;
+	gap: 6px;
+	padding: 4px 12px;
+	border-radius: 999px;
+	font-size: 12px;
+	font-weight: 600;
+	margin-left: 8px;
+}
+
+.score-badge.high {
+	background: #10b98122;
+	color: var(--wpseo-success);
+}
+
+.score-badge.medium {
+	background: #f59e0b22;
+	color: var(--wpseo-warning);
+}
+
+.score-badge.low {
+	background: #ef444422;
+	color: var(--wpseo-danger);
+}
+
+.wpseo-pro-empty p {
+	color: var(--wpseo-text2);
+}
+
+::-webkit-scrollbar {
+	width: 8px;
+}
+
+::-webkit-scrollbar-track {
+	background: var(--wpseo-surface2);
+}
+
+::-webkit-scrollbar-thumb {
+	background: var(--wpseo-border);
+	border-radius: 4px;
+}
+
+@media (max-width: 782px) {
+	.audit-cards {
+		grid-template-columns: 1fr;
+	}
+
+	.wpseo-pro-editor-body {
+		padding: 16px;
+	}
+}
+
+
+.wpseo-pro-card h2 {
+	font-size: 16px;
+	margin: 0 0 12px 0;
+}
+
+.wpseo-pro-card p {
+	color: var(--wpseo-text2);
+	margin: 0 0 12px 0;
+}
+
+.wpseo-pro-card .button {
+	margin: 4px 8px 4px 0;
+}
+
+.wpseo-pro-settings .description {
+	color: var(--wpseo-text2);
+	margin-bottom: 24px;
+}
+
+.wpseo-pro-settings form {
+	background: var(--wpseo-surface);
+	border: 1px solid var(--wpseo-border);
+	border-radius: 12px;
+	padding: 24px;
+}
+
+.wpseo-pro-settings h3 {
+	font-size: 16px;
+	margin: 24px 0 12px 0;
+}
+
+.wpseo-pro-settings ul {
+	color: var(--wpseo-text2);
+	margin: 0;
+	padding-left: 20px;
+}
+
+.wpseo-pro-settings li {
+	margin-bottom: 6px;
+}
+
+.wpseo-pro-audit-sidebar {
+	background: var(--wpseo-surface);
+	border: 1px solid var(--wpseo-border);
+	border-radius: 12px;
+	padding: 20px;
+	margin-bottom: 24px;
+	max-width: 320px;
+}
+
+.wpseo-pro-audit-sidebar label {
+	display: block;
+	margin-bottom: 8px;
+	color: var(--wpseo-text2);
+	font-size: 13px;
+}
+
+.wpseo-pro-audit-sidebar input[type="number"] {
+	width: 100%;
+	padding: 8px 10px;
+	background: var(--wpseo-bg);
+	border: 1px solid var(--wpseo-border);
+	border-radius: 6px;
+	color: var(--wpseo-text);
+}
+
+.wpseo-pro-audit-sidebar .button {
+	margin-top: 12px;
+}
+
+.wpseo-pro-audit-body h2 {
+	font-size: 18px;
+	margin-bottom: 20px;
+}
+
+.score-ring-wrap {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	margin-bottom: 24px;
+}
+
+.score-ring {
+	position: relative;
+	width: 160px;
+	height: 160px;
+}
+
+.score-ring svg {
+	transform: rotate(-90deg);
+	width: 100%;
+	height: 100%;
+}
+
+.score-ring .bg {
+	fill: none;
+	stroke: var(--wpseo-surface2);
+ stroke-width: 10;
+}
+
+.score-ring .fg {
+	fill: none;
+	stroke: var(--wpseo-primary);
+	stroke-width: 10;
+	stroke-linecap: round;
+	transition: stroke-dashoffset 0.6s ease;
+}
+
+.score-ring .score-value {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	font-size: 36px;
+	font-weight: 700;
+}
+
+.score-ring .score-label {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	font-size: 12px;
+}

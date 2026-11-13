@@ -1,6 +1,6 @@
 <?php
 /**
- * SEO 审计：单篇扫描、关键词、内部链接、密度。
+ * SEO 审计扫描引擎：单篇扫描、关键词、内部链接、密度、标题结构。
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
@@ -9,7 +9,10 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 if ( ! function_exists( 'wpseo_pro_audit_single_post' ) ) :
 	/**
-	 * 单篇审计扫描，返回结构化数组。
+	 * 单篇审计扫描。
+	 *
+	 * @param int $post_id 文章 ID。
+	 * @return array
 	 */
 	function wpseo_pro_audit_single_post( $post_id ) {
 		$post = get_post( $post_id );
@@ -17,9 +20,9 @@ if ( ! function_exists( 'wpseo_pro_audit_single_post' ) ) :
 			return array();
 		}
 
-		$content  = get_post_field( 'post_content', $post_id );
-		$title    = get_the_title( $post_id );
-		$has_img  = has_post_thumbnail( $post_id );
+		$content   = get_post_field( 'post_content', $post_id );
+		$title     = get_the_title( $post_id );
+		$has_image = has_post_thumbnail( $post_id );
 
 		$keywords       = wpseo_pro_collect_keywords( $post_id );
 		$internal_links = wpseo_pro_count_internal_links( $content );
@@ -31,7 +34,7 @@ if ( ! function_exists( 'wpseo_pro_audit_single_post' ) ) :
 			'post_type'         => $post->post_type,
 			'title'             => $title,
 			'title_len'         => wpseo_pro_byte_length( $title ),
-			'has_image'         => (bool) $has_img,
+			'has_image'         => (bool) $has_image,
 			'internal_links'    => $internal_links,
 			'keyword_density'   => $density,
 			'headings'          => $headings,
@@ -40,23 +43,26 @@ if ( ! function_exists( 'wpseo_pro_audit_single_post' ) ) :
 			'h3_count'          => isset( $headings['h3'] ) ? (int) $headings['h3'] : 0,
 			'keywords'          => array_values( array_unique( $keywords ) ),
 			'common_words'      => wpseo_pro_get_common_words( $content ),
-			'score'             => wpseo_pro_calculate_score( $title, $has_img, $internal_links, $headings ),
-			'details'           => array(
-				'title_too_short'   => wpseo_pro_byte_length( $title ) < 40,
-				'title_too_long'    => wpseo_pro_byte_length( $title ) > 60,
-				'no_image'          => ! $has_img,
+		'score'             => wpseo_pro_calculate_score( $title, $has_image, $internal_links, $headings ),
+		'details'           => array(
+				'title_too_short'    => wpseo_pro_byte_length( $title ) < 40,
+				'title_too_long'     => wpseo_pro_byte_length( $title ) > 60,
+				'no_image'           => ! $has_image,
 				'low_internal_links' => $internal_links < 3,
-				'missing_h1'        => $headings['h1'] === 0,
-				'missing_h2'        => $headings['h2'] === 0,
-				'too_many_h3'       => isset( $headings['h3'] ) && $headings['h3'] > 5,
-			),
-		);
+				'missing_h1'         => $headings['h1'] === 0,
+				'missing_h2'         => $headings['h2'] === 0,
+			'too_many_h3'        => isset( $headings['h3'] ) && $headings['h3'] > 5,
+		),
+	);
 	}
 endif;
 
 if ( ! function_exists( 'wpseo_pro_collect_keywords' ) ) :
 	/**
-	 * 收集关键词（新标签 + 目录）。
+	 * 收集关键词（标签 + 目录）。
+	 *
+	 * @param int $post_id 文章 ID。
+	 * @return array
 	 */
 	function wpseo_pro_collect_keywords( $post_id ) {
 		$keywords = array();
@@ -82,6 +88,9 @@ endif;
 if ( ! function_exists( 'wpseo_pro_count_internal_links' ) ) :
 	/**
 	 * 计算内部链接数。
+	 *
+	 * @param string $content 文章内容。
+	 * @return int
 	 */
 	function wpseo_pro_count_internal_links( $content ) {
 		if ( empty( $content ) ) {
@@ -107,6 +116,10 @@ endif;
 if ( ! function_exists( 'wpseo_pro_calculate_keyword_density' ) ) :
 	/**
 	 * 计算关键词密度（百分比）。
+	 *
+	 * @param string  $content   文章内容。
+	 * @param array   $keywords  关键词列表。
+	 * @return array
 	 */
 	function wpseo_pro_calculate_keyword_density( $content, $keywords ) {
 		if ( empty( $content ) || empty( $keywords ) ) {
@@ -141,6 +154,9 @@ endif;
 if ( ! function_exists( 'wpseo_pro_count_headings' ) ) :
 	/**
 	 * 计数 h1-h6。
+	 *
+	 * @param string $content 文章内容。
+	 * @return array
 	 */
 	function wpseo_pro_count_headings( $content ) {
 		$counts = array( 'h1' => 0, 'h2' => 0, 'h3' => 0, 'h4' => 0, 'h5' => 0, 'h6' => 0 );

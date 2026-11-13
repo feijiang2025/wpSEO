@@ -1,6 +1,6 @@
 <?php
 /**
- * SEO 审计缓存与获取。
+ * SEO 审计缓存。
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
@@ -9,7 +9,10 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 if ( ! function_exists( 'wpseo_pro_audit_cache_key' ) ) :
 	/**
-	 * 审计结果缓存键。
+	 * 审计缓存键。
+	 *
+	 * @param int $post_id 文章 ID。
+	 * @return string
 	 */
 	function wpseo_pro_audit_cache_key( $post_id ) {
 		return 'wpseo_pro_audit_' . absint( $post_id );
@@ -19,6 +22,9 @@ endif;
 if ( ! function_exists( 'wpseo_pro_get_audit' ) ) :
 	/**
 	 * 获取审计结果，若无则生成并缓存。
+	 *
+	 * @param int $post_id 文章 ID。
+	 * @return array
 	 */
 	function wpseo_pro_get_audit( $post_id ) {
 		$post_id = absint( $post_id );

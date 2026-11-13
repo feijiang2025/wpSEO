@@ -1,8 +1,6 @@
 <?php
 /**
  * XML Sitemap Index。
- *
- * 暴露 /sitemap-index.xml 产物（可选），与 /sitemap.xml 互为便捷入口。
  */
 
 if ( ! defined( 'ABSPATH' ) ) {

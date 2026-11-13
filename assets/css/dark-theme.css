@@ -1,5 +1,5 @@
 /**
- * WordPress SEO PRO 暗色主题 — 基础与布局。
+ * WordPress SEO PRO 暗色主题。
  */
 
 :root {
@@ -42,6 +42,7 @@ body {
 .wpseo-pro-dashboard h1 {
 	font-size: 22px;
 	margin-bottom: 8px;
+	color: var(--wpseo-text);
 }
 
 .wpseo-pro-dashboard .description {
@@ -55,6 +56,136 @@ body {
 	border-radius: 12px;
 	padding: 20px;
 	margin-bottom: 20px;
+}
+
+.wpseo-pro-card h2 {
+	font-size: 16px;
+	margin: 0 0 12px 0;
+	color: var(--wpseo-text);
+}
+
+.wpseo-pro-card p {
+	color: var(--wpseo-text2);
+	margin: 0 0 12px 0;
+}
+
+.wpseo-pro-card .button {
+	margin: 4px 8px 4px 0;
+}
+
+.wpseo-pro-settings .description {
+	color: var(--wpseo-text2);
+	margin-bottom: 24px;
+}
+
+.wpseo-pro-settings form {
+	background: var(--wpseo-surface);
+	border: 1px solid var(--wpseo-border);
+	border-radius: 12px;
+	padding: 24px;
+}
+
+.wpseo-pro-settings h3 {
+	font-size: 16px;
+	margin: 24px 0 12px 0;
+	color: var(--wpseo-text);
+}
+
+.wpseo-pro-settings ul {
+	color: var(--wpseo-text2);
+	margin: 0;
+	padding-left: 20px;
+}
+
+.wpseo-pro-settings li {
+	margin-bottom: 6px;
+}
+
+.wpseo-pro-audit-sidebar {
+	background: var(--wpseo-surface);
+	border: 1px solid var(--wpseo-border);
+	border-radius: 12px;
+	padding: 20px;
+	margin-bottom: 24px;
+	max-width: 320px;
+}
+
+.wpseo-pro-audit-sidebar label {
+	display: block;
+	margin-bottom: 8px;
+	color: var(--wpseo-text2);
+	font-size: 13px;
+}
+
+.wpseo-pro-audit-sidebar input[type="number"] {
+	width: 100%;
+	padding: 8px 10px;
+	background: var(--wpseo-bg);
+	border: 1px solid var(--wpseo-border);
+	border-radius: 6px;
+	color: var(--wpseo-text);
+	font-size: 14px;
+}
+
+.wpseo-pro-audit-sidebar .button {
+	margin-top: 12px;
+}
+
+.wpseo-pro-audit-body h2 {
+	font-size: 18px;
+	margin-bottom: 20px;
+}
+
+.score-ring-wrap {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	margin-bottom: 24px;
+}
+
+.score-ring {
+	position: relative;
+	width: 160px;
+	height: 160px;
+}
+
+.score-ring svg {
+	transform: rotate(-90deg);
+	width: 100%;
+	height: 100%;
+}
+
+.score-ring .bg {
+	fill: none;
+	stroke: var(--wpseo-surface2);
+	stroke-width: 10;
+}
+
+.score-ring .fg {
+	fill: none;
+	stroke: var(--wpseo-primary);
+	stroke-width: 10;
+	stroke-linecap: round;
+	transition: stroke-dashoffset 0.6s ease;
+}
+
+.score-ring .score-value {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	font-size: 36px;
+	font-weight: 700;
+	color: var(--wpseo-text);
+}
+
+.score-ring .score-label {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	font-size: 12px;
+	color: var(--wpseo-text3);
 }
 
 .audit-cards {
@@ -78,6 +209,7 @@ body {
 	display: flex;
 	align-items: center;
 	gap: 8px;
+	color: var(--wpseo-text);
 }
 
 .audit-card-list {
@@ -128,6 +260,10 @@ body {
 	padding: 40px 0;
 }
 
+.wpseo-pro-empty p {
+	color: var(--wpseo-text2);
+}
+
 .wpseo-pro-editor-header {
 	display: flex;
 	align-items: center;
@@ -142,6 +278,7 @@ body {
 .editor-post-label {
 	font-size: 16px;
 	font-weight: 600;
+	color: var(--wpseo-text);
 }
 
 .wpseo-pro-editor-body {
@@ -158,6 +295,7 @@ body {
 .editor-section h2 {
 	font-size: 16px;
 	margin: 0 0 16px 0;
+	color: var(--wpseo-text);
 }
 
 .field-group {
@@ -199,6 +337,7 @@ body {
 
 .field-group .length-indicator .current {
 	font-weight: 700;
+	color: var(--wpseo-text);
 }
 
 .score-breakdown {
@@ -227,6 +366,7 @@ body {
 .score-breakdown .breakdown-value {
 	font-size: 18px;
 	font-weight: 700;
+	color: var(--wpseo-text);
 }
 
 .editor-actions {
@@ -251,22 +391,18 @@ body {
 }
 
 .score-badge.high {
-	background: #10b98122;
+	background: rgba(16, 185, 129, 0.2);
 	color: var(--wpseo-success);
 }
 
 .score-badge.medium {
-	background: #f59e0b22;
+	background: rgba(245, 158, 11, 0.2);
 	color: var(--wpseo-warning);
 }
 
 .score-badge.low {
-	background: #ef444422;
+	background: rgba(239, 68, 68, 0.2);
 	color: var(--wpseo-danger);
-}
-
-.wpseo-pro-empty p {
-	color: var(--wpseo-text2);
 }
 
 ::-webkit-scrollbar {
@@ -282,6 +418,10 @@ body {
 	border-radius: 4px;
 }
 
+::-webkit-scrollbar-thumb:hover {
+	background: var(--wpseo-text3);
+}
+
 @media (max-width: 782px) {
 	.audit-cards {
 		grid-template-columns: 1fr;
@@ -290,130 +430,4 @@ body {
 	.wpseo-pro-editor-body {
 		padding: 16px;
 	}
-}
-
-
-.wpseo-pro-card h2 {
-	font-size: 16px;
-	margin: 0 0 12px 0;
-}
-
-.wpseo-pro-card p {
-	color: var(--wpseo-text2);
-	margin: 0 0 12px 0;
-}
-
-.wpseo-pro-card .button {
-	margin: 4px 8px 4px 0;
-}
-
-.wpseo-pro-settings .description {
-	color: var(--wpseo-text2);
-	margin-bottom: 24px;
-}
-
-.wpseo-pro-settings form {
-	background: var(--wpseo-surface);
-	border: 1px solid var(--wpseo-border);
-	border-radius: 12px;
-	padding: 24px;
-}
-
-.wpseo-pro-settings h3 {
-	font-size: 16px;
-	margin: 24px 0 12px 0;
-}
-
-.wpseo-pro-settings ul {
-	color: var(--wpseo-text2);
-	margin: 0;
-	padding-left: 20px;
-}
-
-.wpseo-pro-settings li {
-	margin-bottom: 6px;
-}
-
-.wpseo-pro-audit-sidebar {
-	background: var(--wpseo-surface);
-	border: 1px solid var(--wpseo-border);
-	border-radius: 12px;
-	padding: 20px;
-	margin-bottom: 24px;
-	max-width: 320px;
-}
-
-.wpseo-pro-audit-sidebar label {
-	display: block;
-	margin-bottom: 8px;
-	color: var(--wpseo-text2);
-	font-size: 13px;
-}
-
-.wpseo-pro-audit-sidebar input[type="number"] {
-	width: 100%;
-	padding: 8px 10px;
-	background: var(--wpseo-bg);
-	border: 1px solid var(--wpseo-border);
-	border-radius: 6px;
-	color: var(--wpseo-text);
-}
-
-.wpseo-pro-audit-sidebar .button {
-	margin-top: 12px;
-}
-
-.wpseo-pro-audit-body h2 {
-	font-size: 18px;
-	margin-bottom: 20px;
-}
-
-.score-ring-wrap {
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	margin-bottom: 24px;
-}
-
-.score-ring {
-	position: relative;
-	width: 160px;
-	height: 160px;
-}
-
-.score-ring svg {
-	transform: rotate(-90deg);
-	width: 100%;
-	height: 100%;
-}
-
-.score-ring .bg {
-	fill: none;
-	stroke: var(--wpseo-surface2);
- stroke-width: 10;
-}
-
-.score-ring .fg {
-	fill: none;
-	stroke: var(--wpseo-primary);
-	stroke-width: 10;
-	stroke-linecap: round;
-	transition: stroke-dashoffset 0.6s ease;
-}
-
-.score-ring .score-value {
-	position: absolute;
-	top: 50%;
-	left: 50%;
-	transform: translate(-50%, -50%);
-	font-size: 36px;
-	font-weight: 700;
-}
-
-.score-ring .score-label {
-	position: absolute;
-	top: 50%;
-	left: 50%;
-	transform: translate(-50%, -50%);
-	font-size: 12px;
 }

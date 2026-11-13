@@ -1,6 +1,6 @@
 <?php
 /**
- * SEO 审计：字长、频率、总分。
+ * SEO 审计：字长、频率、总分计算。
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
@@ -10,6 +10,9 @@ if ( ! defined( 'ABSPATH' ) ) {
 if ( ! function_exists( 'wpseo_pro_byte_length' ) ) :
 	/**
 	 * UTF-8 字符长度。
+	 *
+	 * @param string $text 文本。
+	 * @return int
 	 */
 	function wpseo_pro_byte_length( $text ) {
 		return mb_strlen( $text, 'UTF-8' );
@@ -19,6 +22,9 @@ endif;
 if ( ! function_exists( 'wpseo_pro_get_common_words' ) ) :
 	/**
 	 * 获取高频词。
+	 *
+	 * @param string $content 文章内容。
+	 * @return array
 	 */
 	function wpseo_pro_get_common_words( $content ) {
 		if ( empty( $content ) ) {
@@ -45,6 +51,7 @@ if ( ! function_exists( 'wpseo_pro_get_common_words' ) ) :
 		}
 
 		arsort( $counts );
+
 		return array_keys( $counts );
 	}
 endif;
@@ -52,6 +59,12 @@ endif;
 if ( ! function_exists( 'wpseo_pro_calculate_score' ) ) :
 	/**
 	 * 计算总评分 0-100。
+	 *
+	 * @param string $title         文章标题。
+	 * @param bool   $has_image     是否有缩略图。
+	 * @param int    $internal_links 内部链接数。
+	 * @param array  $headings      标题结构数组。
+	 * @return int
 	 */
 	function wpseo_pro_calculate_score( $title, $has_image, $internal_links, $headings ) {
 		$title_len = wpseo_pro_byte_length( $title );

@@ -143,54 +143,9 @@ function wpseo_pro_render_settings_page() {
 /**
  * 渲染审计面板（后台快捷入口）。
  */
-function wpseo_pro_render_audit_panel() {
-	if ( ! wpseo_pro_can_check_audit() ) {
-		wp_die( __( '对不起，您没有权限访问此页面。', 'wpseo-pro' ) );
-	}
-
-	$post_id = isset( $_GET['post_id'] ) ? absint( $_GET['post_id'] ) : 0;
-	if ( ! $post_id ) {
-		$post_id = isset( $_GET['post'] ) ? absint( $_GET['post'] ) : 0;
-	}
-
-	$audit = array();
-	if ( $post_id ) {
-		$audit = wpseo_pro_get_audit( $post_id );
-	}
-
-	?>
-	<div class="wrap wpseo-pro-audit">
-		<h1><?php echo esc_html( get_admin_page_title() ); ?></h1>
-		<?php if ( $post_id ) : ?>
-			<p><?php echo esc_html( get_the_title( $post_id ) ); ?></p>
-		<?php else : ?>
-			<p><?php esc_html_e( '选择一个文章/页面 ID，查看实时 SEO 审计结果。', 'wpseo-pro' ); ?></p>
-		<?php endif; ?>
-		<div id="wpseo-audit-result" data-post-id="<?php echo esc_attr( $post_id ); ?>"></div>
-		<?php if ( $post_id ) : ?>
-			<a href="<?php echo esc_url( admin_url( 'post.php?action=edit&post=' . $post_id ) ); ?>" class="button"><?php esc_html_e( '回到文章编辑', 'wpseo-pro' ); ?></a>
-		<?php endif; ?>
-	</div>
-	<?php
-}
-
 /**
  * 渲染 SEO 编辑器（需 JS 交互）。
  */
-
-/**
- * 是否允许访问审计。
- */
-function wpseo_pro_can_check_audit() {
-	return wpseo_pro_can( 'audit' );
-}
-
-/**
- * 是否允许编辑 SEO。
- */
-function wpseo_pro_can_edit_seo() {
-	return current_user_can( 'manage_options' );
-}
 
 /**
  * 是否允许生成 Sitemap。

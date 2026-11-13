@@ -51,6 +51,7 @@ require WPSEO_PRO_INCLUDES_DIR . 'admin/assets.php';
 require WPSEO_PRO_INCLUDES_DIR . 'admin/settings-page.php';
 require WPSEO_PRO_INCLUDES_DIR . 'admin/seo-editor.php';
 require WPSEO_PRO_INCLUDES_DIR . 'admin/seo-editor-get.php';
+require WPSEO_PRO_INCLUDES_DIR . 'admin/audit-panel.php';
 
 require WPSEO_PRO_INCLUDES_DIR . 'analytics/seo-audit-cache.php';
 require WPSEO_PRO_INCLUDES_DIR . 'analytics/seo-audit-scan.php';
